@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace TehDeck {
-    public class Card {
+﻿namespace TehDeck {
+    [System.Serializable]
+    public abstract class Card {
         public string Name {
-            get; private set;
+            get; protected set;
         }
 
+        public abstract bool IsEqualTo(Card other);
     }
 }
