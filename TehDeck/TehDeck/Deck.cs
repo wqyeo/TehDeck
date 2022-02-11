@@ -9,6 +9,12 @@ namespace TehDeck {
             get; protected set;
         }
 
+        public int CardCount {
+            get {
+                return cards.Count;
+            }
+        }
+
         protected Stack<Card> cards;
 
         public Deck(DeckInfo _deckInfo) {
@@ -16,6 +22,25 @@ namespace TehDeck {
 
             if (DeckInfo == null) {
                 throw new ArgumentNullException("_deckInfo");
+            }
+
+            Generate();
+        }
+
+        /// <summary>
+        /// Completely regenerates the deck.
+        /// </summary>
+        public void ResetDeck() {
+            Generate();
+        }
+
+        /// <summary>
+        /// Completely regenerates the deck with the new deckInfo.
+        /// </summary>
+        /// <param name="_deckInfo"></param>
+        public void ResetDeck(DeckInfo _deckInfo) {
+            if (_deckInfo != null) {
+                DeckInfo = _deckInfo;
             }
 
             Generate();
@@ -34,6 +59,11 @@ namespace TehDeck {
             }
 
             GenerateNonUniqueCards();
+
+            if (!HitDeckLimit()) {
+                // TODO: Warn about not hitting deck limit
+            }
+
             cards = Shuffle(cards);
 
             #region Local_Function
@@ -84,6 +114,44 @@ namespace TehDeck {
         public Stack<Card> Shuffle(Stack<Card> stack) {
             Random rnd = new Random();
             return new Stack<Card>(stack.OrderBy(x => rnd.Next()));
+        }
+
+        /// <summary>
+        /// Insert at card into a deck with index.
+        /// To push a card to the top of the deck, use PushCard(Card).
+        /// </summary>
+        /// <param name="card"></param>
+        /// <param name="index"></param>
+        public void InsertCard(Card card, int index = -1) {
+            List<Card> temp = cards.ToList();
+
+            if (IndexOutOfRange()) {
+                temp.Add(card);
+            } else {
+                temp.Insert(index, card);
+            }
+
+            cards = new Stack<Card>(temp);
+
+            #region Local_Function
+
+            bool IndexOutOfRange() {
+                return index < 0 || index >= cards.Count;
+            }
+
+            #endregion
+        }
+
+        public void PushCard(Card card) {
+            cards.Push(card);
+        }
+
+        public Card NextCard() {
+            return cards.Pop();
+        }
+
+        public Card PeekCard() {
+            return cards.Peek();
         }
     }
 }
