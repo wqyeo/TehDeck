@@ -111,7 +111,11 @@ namespace TehDeck {
             #endregion
         }
 
-        public Stack<Card> Shuffle(Stack<Card> stack) {
+        public void Shuffle() {
+            cards = Shuffle(cards);
+        }
+
+        private Stack<Card> Shuffle(Stack<Card> stack) {
             Random rnd = new Random();
             return new Stack<Card>(stack.OrderBy(x => rnd.Next()));
         }
@@ -152,6 +156,10 @@ namespace TehDeck {
 
         public Card PeekCard() {
             return cards.Peek();
+        }
+
+        public Card[] RevealDeck() {
+            return cards.ToArray();
         }
     }
 }

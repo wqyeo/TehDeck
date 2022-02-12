@@ -25,5 +25,14 @@
             CardRef = _cardRef;
             UniqueCount = _uniqueCount;
         }
+
+        /// <summary>
+        /// Information for this card to be used in a deck.
+        /// </summary>
+        /// <param name="_cardRef">Reference to the card.</param>
+        public CardInfo(Card _cardRef) {
+            CardRef = _cardRef;
+            UniqueCount = -1;
+        }
     }
 }
