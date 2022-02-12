@@ -24,22 +24,21 @@ namespace Example {
         private bool isGameOver;
 
         public Game() {
-            DeckInfo deckInfo = new DeckInfo(6, GenerateCardInfos());
 
+            // Generate card information first.
+            List<CardInfo> cardInfos = new List<CardInfo>();
+            // There should only be 1 joker card.
+            cardInfos.Add(new CardInfo(new JokerCard(), 1));
+            // Fill the rest of the deck with blanks.
+            cardInfos.Add(new CardInfo(new BlankCard()));
+
+            // The deck will only have 6 cards, populated with the above card information.
+            DeckInfo deckInfo = new DeckInfo(6, cardInfos);
+            // Create the deck.
             deck = new Deck(deckInfo);
+
             isPlayerTurn = true;
             isGameOver = false;
-
-            #region Local_Function
-
-            List<CardInfo> GenerateCardInfos() {
-                List<CardInfo> cardInfos = new List<CardInfo>();
-                cardInfos.Add(new CardInfo(new JokerCard(), 1));
-                cardInfos.Add(new CardInfo(new BlankCard()));
-                return cardInfos;
-            }
-
-            #endregion
         }
 
         public void Start() {
@@ -135,12 +134,14 @@ namespace Example {
             #region Local_Function
 
             void AddCard() {
+                // Push a joker card into the deck.
                 deck.PushCard(new JokerCard());
+
+                // Push 5 blank cards into the deck.
                 var blankCard = new BlankCard();
                 for (int i = 0; i < 5; ++i) {
                     deck.PushCard(blankCard);
                 }
-
                 deck.Shuffle();
             }
 

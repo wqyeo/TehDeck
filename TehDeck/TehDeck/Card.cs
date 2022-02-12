@@ -6,5 +6,9 @@
         }
 
         public abstract bool IsEqualTo(Card other);
+
+        public static explicit operator CardInfo(Card other) {
+            return new CardInfo(other);
+        }
     }
 }

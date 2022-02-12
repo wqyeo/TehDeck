@@ -3,7 +3,7 @@
 namespace Example {
     class Program {
 
-        // A simple game where you attempt to not draw a joker card against a dummy AI
+        // A simple game where you attempt to not draw a joker card against a dummy AI.
 
         // 'DRAW' -> Draws a card.
         // 'ADD' -> Add cards to the deck and shuffles before drawing.
