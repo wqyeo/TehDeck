@@ -1,7 +1,8 @@
 TehDeck
 =======
 
-TehDeck is a .NET API designed to ease the creation of custom Cards and Decks for games.
+TehDeck is a .NET API designed to ease the creation of custom Cards and Decks for games.<br>
+This project is part of [Nuget Package](https://www.nuget.org/packages/TehDeck/1.0.0).
 
 ## Usage
 

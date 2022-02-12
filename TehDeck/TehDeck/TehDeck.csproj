@@ -2,6 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>KaynnCahya</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/wqyeo/TehDeck</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/wqyeo/TehDeck</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Card,Deck</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <Description>TehDeck is a .NET API designed to ease the creation of custom Cards and Decks for games.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
